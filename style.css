@@ -83,6 +83,7 @@ h1 {
   margin: 0 auto 20px auto;
   width: 80vw;  
   font-family: 'Open Sans', sans-serif;
+  display: none;
 }
 .user-question h2 {
   font-size: 20px;
@@ -99,6 +100,7 @@ h1 {
   width: 60vw;
   vertical-align: top;
   text-align: left;
+  display: none;
 }
 .user-answer h2 {
   font-size: 40px;
@@ -114,6 +116,20 @@ h1 {
 }
 #user-answer-source a {
   font-size: 16px;
+}
+
+.resetbutton {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: #22779a;
+  background-color: #1f485c;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  border: 0;
+}
+.resetbutton:hover {
+  cursor: pointer;        
 }
 
 @media screen and (max-width: 600px) {
@@ -154,3 +170,14 @@ h1 {
   }
 }
 
+.show-user-question {
+  display: block;
+}
+
+.show-user-answer {
+  display: inline-block;
+}
+
+.hide-input {
+  display: none;
+}

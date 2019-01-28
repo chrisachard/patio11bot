@@ -29,7 +29,7 @@
 
     <div class="question">
 
-      <div class="user-question">
+      <div class="user-question" id="user-question">
         <h2>You Asked:</h2>
         <p id="user-question-text">Question</p>
       </div>
@@ -38,14 +38,15 @@
         patio11bot
       </object>
 
-      <div class="user-answer">
+      <div class="user-answer" id="user-answer">
         <h2>patio11bot&nbsp;says:</h2>
         <p id="user-answer-text"></p>
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br /><br />
         <p id="user-answer-source"></p>
+        <br />
+        <button class="resetbutton" id="resetbutton" onclick="reset()">
+          Ask Another Question
+        </button>
       </div>
 
       <div id="user-input">
@@ -100,6 +101,11 @@
       }
 
       function askquestion() {
+
+        document.getElementById("user-input").classList.add("hide-input")
+        document.getElementById("user-question").classList.add("show-user-question")
+        document.getElementById("user-answer").classList.add("show-user-answer")
+
         talk()
         const question = document.getElementById("question-input").value
         document.getElementById("question-input").value = ''
@@ -108,6 +114,12 @@
         const answer = getAnswer(question)
         document.getElementById("user-answer-text").innerHTML = answer.quote
         document.getElementById("user-answer-source").innerHTML = "<a href='"+answer.url+"' target='_blank'>see source</a>"
+      }
+
+      function reset() {
+        document.getElementById("user-input").classList.remove("hide-input")
+        document.getElementById("user-question").classList.remove("show-user-question")
+        document.getElementById("user-answer").classList.remove("show-user-answer")
       }
 
     </script>
