@@ -55,11 +55,17 @@ h1 {
   .footer p {
     font-size: 14px;
   }
+  #patio11-svg {
+    width: 50vw;
+  }
 }
 
 @media screen and (min-width: 601px) {
   .footer p {
     font-size: 12px;
+  }
+  #patio11-svg {
+    width: 250px;
   }
 }
 
