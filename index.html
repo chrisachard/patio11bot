@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>patio11bot</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400|Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <script src="answer.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+
+    <div class="heading">
+      <h1>patio11🤖bot</h1>
+    </div>
+
+    <div class="subheading">
+      ✨
+      <div class="subheading-text">
+        <p><i>10 years of SaaS knowledge</i></p>
+        <p><i>in one magical package</i></p>
+      </div>
+      &#x2728;
+    </div>
+
+    <div class="question">
+
+      <div class="user-question" id="user-question">
+        <h2>You Asked:</h2>
+        <p id="user-question-text">Question</p>
+      </div>
+
+      <object type="image/svg+xml" data="patio11.svg" id="patio11-svg">
+        patio11bot
+      </object>
+
+      <div class="user-answer" id="user-answer">
+        <h2>patio11bot&nbsp;says:</h2>
+        <p id="user-answer-text"></p>
+        <br /><br /><br /><br />
+        <p id="user-answer-source"></p>
+        <br />
+        
+        <div id="tweet-button"></div>
+
+        <br />
+        <button class="resetbutton" id="resetbutton" onclick="reset()">
+          Ask Another Question
+        </button>
+      </div>
+
+      <div id="user-input">
+
+        <input 
+          type="text" 
+          placeholder="What's your question?" 
+          id="question-input" 
+        />
+        <br />
+        <button id="get-answer" onclick="askquestion()">
+          Get the Answer
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="footer">      
+      <p>
+        made by <a href="https://twitter.com/chrisachard">@chrisachard</a>
+      </p>
+    </div>
+
+    <script type="text/javascript">
+      
+      function talkRecurse(mouth, openMouth, n) {
+        if(n === 0) {
+          return;
+        }
+
+        openMouth.setAttribute('visibility', 'visible')
+        mouth.setAttribute('visibility', 'hidden')
+
+        setTimeout(function() {
+          mouth.setAttribute('visibility', 'visible')
+          openMouth.setAttribute('visibility', 'hidden')
+          
+          setTimeout(function() {
+            talkRecurse(mouth, openMouth, n-1)            
+          }, Math.random() * 250)
+
+        }, Math.random() * 250)
+      }
+
+      function talk() {
+        const svg = document.getElementById('patio11-svg')
+        const svgDoc = svg.contentDocument
+        const mouth = svgDoc.getElementById("mouth")
+        const openMouth = svgDoc.getElementById("open-mouth")
+        talkRecurse(mouth, openMouth, 10)
+      }
+
+      function askquestion() {
+
+        document.getElementById("user-answer-text").style.opacity = 0;
+
+        setTimeout(function( ) {
+          document.getElementById("user-answer-text").style.opacity = 1.0;
+        }, 1000)
+
+        document.getElementById("user-input").classList.add("hide-input")
+        document.getElementById("user-question").classList.add("show-user-question")
+        document.getElementById("user-answer").classList.add("show-user-answer")
+
+        talk()
+        const question = document.getElementById("question-input").value
+        document.getElementById("question-input").value = ''
+        document.getElementById("user-question-text").innerHTML = question
+
+        const answer = getAnswer(question)
+        document.getElementById("user-answer-text").innerHTML = answer.quote
+        document.getElementById("user-answer-source").innerHTML = "<a href='"+answer.url+"' target='_blank'>see source</a>"
+
+        document.getElementById("tweet-button").innerHTML = '        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-size="large" data-via="chrisachard" data-text="patio11bot.com just told me:\n\n'+answer.quote+'\n\nWhat will it tell you?">Tweet</a>'
+        twttr.widgets.load()
+      }
+
+      function reset() {
+        document.getElementById("user-input").classList.remove("hide-input")
+        document.getElementById("user-question").classList.remove("show-user-question")
+        document.getElementById("user-answer").classList.remove("show-user-answer")
+      }
+
+    </script>
+
+  </body>
+</html>
