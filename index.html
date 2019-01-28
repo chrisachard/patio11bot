@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
 
     <script src="answer.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </head>
 
   <body>
@@ -43,6 +44,10 @@
         <p id="user-answer-text"></p>
         <br /><br /><br /><br />
         <p id="user-answer-source"></p>
+        <br />
+        
+        <div id="tweet-button"></div>
+
         <br />
         <button class="resetbutton" id="resetbutton" onclick="reset()">
           Ask Another Question
@@ -120,6 +125,9 @@
         const answer = getAnswer(question)
         document.getElementById("user-answer-text").innerHTML = answer.quote
         document.getElementById("user-answer-source").innerHTML = "<a href='"+answer.url+"' target='_blank'>see source</a>"
+
+        document.getElementById("tweet-button").innerHTML = '        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" data-size="large" data-via="chrisachard" data-text="patio11bot.com just told me:\n\n'+answer.quote+'\n\nWhat will it tell you?">Tweet</a>'
+        twttr.widgets.load()
       }
 
       function reset() {

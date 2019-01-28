@@ -3,7 +3,7 @@ function getAnswer(question) {
 
   const relatedQuotes = quotes.filter(function(quote) {
     const matches = question.toLowerCase().split(/\s/).filter(function(word) {
-      return word.length > 3 && 
+      return word.length > 4 && 
         quote.quote.toLowerCase()
           .includes(word.replace(/[^\a-z]/, ''))
     })
