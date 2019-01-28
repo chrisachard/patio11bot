@@ -8,6 +8,8 @@
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400|Work+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <script src="answer.js"></script>
   </head>
 
   <body>
@@ -26,9 +28,40 @@
     </div>
 
     <div class="question">
+
+      <div class="user-question">
+        <h2>You Asked:</h2>
+        <p id="user-question-text">Question</p>
+      </div>
+
       <object type="image/svg+xml" data="patio11.svg" id="patio11-svg">
         patio11bot
       </object>
+
+      <div class="user-answer">
+        <h2>patio11bot&nbsp;says:</h2>
+        <p id="user-answer-text"></p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <p id="user-answer-source"></p>
+      </div>
+
+      <div id="user-input">
+
+        <input 
+          type="text" 
+          placeholder="What's your question?" 
+          id="question-input" 
+        />
+        <br />
+        <button id="get-answer" onclick="askquestion()">
+          Get the Answer
+        </button>
+
+      </div>
+
     </div>
 
     <div class="footer">      
@@ -64,6 +97,17 @@
         const mouth = svgDoc.getElementById("mouth")
         const openMouth = svgDoc.getElementById("open-mouth")
         talkRecurse(mouth, openMouth, 10)
+      }
+
+      function askquestion() {
+        talk()
+        const question = document.getElementById("question-input").value
+        document.getElementById("question-input").value = ''
+        document.getElementById("user-question-text").innerHTML = question
+
+        const answer = getAnswer(question)
+        document.getElementById("user-answer-text").innerHTML = answer.quote
+        document.getElementById("user-answer-source").innerHTML = "<a href='"+answer.url+"' target='_blank'>see source</a>"
       }
 
     </script>
