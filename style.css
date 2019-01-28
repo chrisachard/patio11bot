@@ -6,6 +6,7 @@
 body {
   text-align: center;
   background-color: #1f485c;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .heading {
@@ -14,6 +15,7 @@ body {
 h1 {
   color: #E40408;
   padding: 10px;
+  font-weight: 300;
 }
 .subheading {
   background-color: #1f485c;
@@ -32,6 +34,7 @@ h1 {
 .question {
   padding: 20px;
   background-color: #f8ede5;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .footer {
