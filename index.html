@@ -102,6 +102,12 @@
 
       function askquestion() {
 
+        document.getElementById("user-answer-text").style.opacity = 0;
+
+        setTimeout(function( ) {
+          document.getElementById("user-answer-text").style.opacity = 1.0;
+        }, 1000)
+
         document.getElementById("user-input").classList.add("hide-input")
         document.getElementById("user-question").classList.add("show-user-question")
         document.getElementById("user-answer").classList.add("show-user-answer")

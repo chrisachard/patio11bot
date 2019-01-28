@@ -172,12 +172,37 @@ h1 {
 
 .show-user-question {
   display: block;
+  animation-name: showuserquestion;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showuserquestion {
+  from { height: 0; opacity: 0.0; }
+  to { height: 60px; opacity: 1.0; }
 }
 
 .show-user-answer {
   display: inline-block;
+  overflow: hidden;
+  position: relative;
+  animation-name: showuseranswer;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showuseranswer {
+  from {left: 60vw; opacity: 0.0;}
+  to {left: 0; opacity: 1.0;}
 }
 
 .hide-input {
-  display: none;
+  animation-name: hideinput;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideinput {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
 }
